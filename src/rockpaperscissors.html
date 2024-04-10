@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" type="text/css" href="../css/rps.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        <div class="buttons">
+            <button class="js-play" id="rock"><img src="../images/rock.png" alt="rock"></button>
+            <button class="js-play" id="paper"><img src="../images/paper.png" alt="paper"></button>
+            <button class="js-play" id="scissors"><img src="../images/scissors.png" alt="scissors"></button>
+        </div>
+        <div class="moves">
+            <p class="player">Player's Move: <span id="player-move"></span></p>
+            <p class="computer">Computer's Move: <span id="computer-move"></span></p>
+        </div>
+        <div class="rules">
+            <p><span id="prev-winner"></span> <span id="logic"></span></p>
+        </div>
+        <div class="scores">
+            <p>Player Score: <span id="player-score">0 </span>
+            Computer Score: <span id="computer-score">0 </span>
+            Ties: <span id="num-ties">0</span></p>
+            <p id="curr-leader"></p>
+        </div>
+
+        <script type="text/javascript" src="/src/game.js"></script>
+        <script type="text/javascript" src="/src/htmlupdater.js"></script>
+        <script type="text/javascript" src="/src/play.js"></script>
+    </body>
