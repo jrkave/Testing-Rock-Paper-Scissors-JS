@@ -5,8 +5,10 @@ class GameRunner {
         this.setupButtonListeners();
     }
 
-    handleButtonClick(playerMove) {
-        const computerMove = this.game.getRandomMove();
+    handleButtonClick(playerMove, computerMove=null) {
+        if (computerMove === null) {
+            computerMove = this.game.getRandomMove();
+        }
         this.game.playGame(playerMove, computerMove);
         const updates = this.htmlUpdater.getGameStatusUpdates(this.game);
         this.applyContentChangesToDOM(updates);

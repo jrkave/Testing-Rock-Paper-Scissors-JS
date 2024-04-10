@@ -79,7 +79,7 @@ describe('Updating Player and Computer moves', () => {
     });
 });
 
-describe('Updating the scores and winner of the last round', () => {
+describe('Branch testing to update scores, winner of the last round', () => {
     let game;
 
     beforeEach(() => {
@@ -94,6 +94,16 @@ describe('Updating the scores and winner of the last round', () => {
         expect(game.prevWinner).toBe('player');
         expect(game.playerScore).toBe(1);
         expect(game.computerScore).toBe(0);
+    });
+
+    test('Player loses with rock against paper', () => {
+        expect(game.prevWinner).toBe('');
+        expect(game.playerScore).toBe(0);
+        expect(game.computerScore).toBe(0);
+        game.updateScoresAndWinner('rock', 'paper');
+        expect(game.prevWinner).toBe('computer');
+        expect(game.playerScore).toBe(0);
+        expect(game.computerScore).toBe(1);
     });
 
     test('Player wins with paper against rock', () => {
@@ -111,6 +121,26 @@ describe('Updating the scores and winner of the last round', () => {
         expect(game.playerScore).toBe(0);
         expect(game.computerScore).toBe(0);
         game.updateScoresAndWinner('paper', 'scissors');
+        expect(game.prevWinner).toBe('computer');
+        expect(game.playerScore).toBe(0);
+        expect(game.computerScore).toBe(1);
+    });
+
+    test('Player wins with scissors against paper', () => {
+        expect(game.prevWinner).toBe('');
+        expect(game.playerScore).toBe(0);
+        expect(game.computerScore).toBe(0);
+        game.updateScoresAndWinner('scissors', 'paper');
+        expect(game.prevWinner).toBe('player');
+        expect(game.playerScore).toBe(1);
+        expect(game.computerScore).toBe(0);
+    });
+
+    test('Player loses with scissors against rock', () => {
+        expect(game.prevWinner).toBe('');
+        expect(game.playerScore).toBe(0);
+        expect(game.computerScore).toBe(0);
+        game.updateScoresAndWinner('scissors', 'rock');
         expect(game.prevWinner).toBe('computer');
         expect(game.playerScore).toBe(0);
         expect(game.computerScore).toBe(1);

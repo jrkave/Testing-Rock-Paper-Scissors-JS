@@ -1,132 +1,121 @@
-// Mock Game module
-jest.mock('../src/game', () => {
-  return jest.fn().mockImplementation(() => {
-    return {
-      getRandomMove: () => 'scissors',
-      playGame: jest.fn(),
-      prevWinner: 'player',
-      currLeader: 'player',
-      getState: () => ({})
-    };
-  });
-});
-
-// Mock HTMLUpdater module
-jest.mock('../src/htmlupdater', () => {
-  return jest.fn().mockImplementation(() => {
-    return {
-      getGameStatusUpdates: jest.fn(() => ({
-        playerScore: 1,
-        computerScore: 0,
-        ties: 0,
-        logic: "Rock beats Scissors!",
-        currLeader: "You're in the lead!",
-        playerMove: 'rock',
-        computerMove: 'scissors',
-        prevWinner: 'player',
-      }))
-    };
-  });
-});
-
 const GameRunner = require('../src/play');
 const Game = require('../src/game');
 const HTMLUpdater = require('../src/htmlupdater');
 
-describe('GameRunner DOM is updated with correct styles and colors', () => {
+describe('GameRunner DOM is updated with correct content', () => {
   let game;
-  let htmlUpdater;
+  let updater;
   let gameRunner;
-  
-  beforeEach(() => {
 
+  beforeEach(() => {
     document.body.innerHTML = `
-      <div id="player-move"></div>
-      <div id="computer-move"></div>
-      <div id="player-score"></div>
-      <div id="computer-score"></div>
-      <div id="num-ties"></div>
-      <div id="logic"></div>
-      <div id="curr-leader"></div>
-      <button id="rock">Rock</button>
-      <button id="paper">Paper</button>
-      <button id="scissors">Scissors</button>
-    `;
+    <div id="player-move"></div>
+    <div id="computer-move"></div>
+    <div id="player-score"></div>
+    <div id="computer-score"></div>
+    <div id="num-ties"></div>
+    <div id="logic"></div>
+    <div id="curr-leader"></div>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+  `;
 
     game = new Game();
-    htmlUpdater = new HTMLUpdater();
-    gameRunner = new GameRunner(game, htmlUpdater);
-    //jest.clearAllMocks();
+    updater = new HTMLUpdater();
+    gameRunner = new GameRunner(game, updater);
   });
 
-  afterEach(() => {
-    jest.clearAllMocks(); // Clears usage data of all mocks
-    jest.restoreAllMocks(); // Restores the original implementations
+  test('Calls applyContentChangesToDOM', () => {
+    const obj = {};
+    const contentSpy = jest.spyOn(gameRunner, 'applyContentChangesToDOM');
+    gameRunner.applyContentChangesToDOM(obj);
+    expect(contentSpy).toHaveBeenCalled();
   });
-  
 
-  test('Updates DOM text content correctly on button click', () => {
-    const rockButton = document.getElementById('rock');
-    rockButton.click();
+  test('Calls applyContentChangesToDOM when button is clicked', () => {
+    const button = document.getElementById('rock');
+    const contentSpy = jest.spyOn(gameRunner, 'applyContentChangesToDOM');
+    button.click();
+    expect(contentSpy).toHaveBeenCalled();
+  });
 
-    expect(document.getElementById('player-move').textContent).toBe('rock');
-    expect(document.getElementById('computer-move').textContent).toBe('scissors');
+  test('applyContentChangesToDOM updates DOM correctly', () => {
+    const obj = {
+      playerScore: 1,
+      computerScore: 0,
+      ties: 0,
+      logic: "Paper beats Rock!",
+      currLeader: "You're in the lead!", 
+      playerMove: 'paper',
+      computerMove: 'rock',
+      prevWinner: 'player'
+    };
+    gameRunner.applyContentChangesToDOM(obj);
+
     expect(document.getElementById('player-score').textContent).toBe('1');
     expect(document.getElementById('computer-score').textContent).toBe('0');
     expect(document.getElementById('num-ties').textContent).toBe('0');
-    expect(document.getElementById('logic').textContent).toBe("Rock beats Scissors!");
+    expect(document.getElementById('logic').textContent).toBe('Paper beats Rock!');
     expect(document.getElementById('curr-leader').textContent).toBe("You're in the lead!");
+    expect(document.getElementById('player-move').textContent).toBe('paper');
+    expect(document.getElementById('computer-move').textContent).toBe('rock');
   });
 
-  test('Updates DOM text color correctly on button click', () => {
-    const rockButton = document.getElementById('rock');
-    rockButton.click();
+  test('Calls applyColorChangesToDOM', () => {
+    const colorSpy = jest.spyOn(gameRunner, 'applyColorChangesToDOM');
+    gameRunner.applyColorChangesToDOM();
+    expect(colorSpy).toHaveBeenCalled();
+  });
 
-    expect(document.getElementById('player-move').style.color).toBe('red');
-    expect(document.getElementById('computer-move').style.color).toBe('black');
-    expect(document.getElementById('player-score').style.color).toBe('red');
-    expect(document.getElementById('computer-score').style.color).toBe('black');
+  test('Calls applyColorChangesToDOM when button is clicked', () => {
+    const button = document.getElementById('scissors');
+    const colorSpy = jest.spyOn(gameRunner, 'applyColorChangesToDOM');
+    button.click();
+    expect(colorSpy).toHaveBeenCalled();
+  });
+
+  test('applyColorChangesToDOM updates DOM correctly', () => {
+    gameRunner = new GameRunner(new Game(2, 4, 1, 'computer', 'computer', {'player': 'paper', 'computer':'scissors'}), new HTMLUpdater());
+    const spy = jest.spyOn(gameRunner, 'applyColorChangesToDOM');
+    gameRunner.handleButtonClick('rock', 'paper');
+    
+    expect(document.getElementById('player-score').style.color).toBe('black');
+    expect(document.getElementById('computer-score').style.color).toBe('red');
+    expect(document.getElementById('player-move').style.color).toBe('black');
+    expect(document.getElementById('computer-move').style.color).toBe('red');
   });
 });
 
-describe('Event listeners are set up properly and functions that apply changes are called when necessary', () => {
+describe('Buttons and corresponding event listeners are set up properly', () => {
   let gameRunner;
   
   beforeEach(() => {
-    jest.spyOn(GameRunner.prototype, 'setupButtonListeners');
     gameRunner = new GameRunner(new Game(), new HTMLUpdater());
-    jest.spyOn(gameRunner, 'applyColorChangesToDOM');
-    jest.spyOn(gameRunner, 'applyContentChangesToDOM');
   });
 
   afterEach(() => {
-    jest.clearAllMocks(); // Clears usage data of all mocks
-    jest.restoreAllMocks(); // Restores the original implementations
+    jest.clearAllMocks(); 
+    jest.restoreAllMocks(); 
   });
   
-
   test('setupButtonListeners is called once upon GameRunner instantiation', () => {
-    expect(GameRunner.prototype.setupButtonListeners).toHaveBeenCalledTimes(1);
+    const spy = jest.spyOn(GameRunner.prototype, 'setupButtonListeners');
+    gameRunner = new GameRunner(new Game(), new HTMLUpdater());
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Event listeners are correctly added to buttons', () => {
+  test('handleButtonClick is called correctly upon clicks, using button.id', () => {
+    const spy = jest.spyOn(gameRunner, 'handleButtonClick');
     const buttons = document.querySelectorAll('button');
-    expect(buttons.length).toBe(3);
-  });
 
-  test('applyColorChangesToDOM is called on button click', () => {
-    const rockButton = document.getElementById('rock');
-    rockButton.click();
-    expect(gameRunner.applyColorChangesToDOM).toHaveBeenCalledTimes(1);
-    rockButton.click();
-    expect(gameRunner.applyColorChangesToDOM).toHaveBeenCalledTimes(2);
-  });
+    buttons.forEach(button => {
+      button.click();
+    });
 
-  test('applyContentChangesToDOM is called on button click', () => {
-    const scissorsButton = document.getElementById('scissors');
-    scissorsButton.click();
-    expect(gameRunner.applyContentChangesToDOM).toHaveBeenCalledTimes(1);
-    scissorsButton.click();
-    expect(gameRunner.applyContentChangesToDOM).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(3);
+    buttons.forEach(button => {
+      expect(spy).toHaveBeenCalledWith(button.id);
+    });
   });
 });
