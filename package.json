@@ -4,10 +4,14 @@
     "jest-environment-jsdom": "^29.7.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/tests/*.js"],
+    "testPathIgnorePatterns": ["/tests/firefox.test.js"]
   },
   "dependencies": {
     "express": "^4.19.2",
