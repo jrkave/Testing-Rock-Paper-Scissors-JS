@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1712778983709" clover="3.2.0">
-  <project timestamp="1712778983709" name="All files">
+<coverage generated="1712798005521" clover="3.2.0">
+  <project timestamp="1712798005521" name="All files">
     <metrics statements="101" coveredstatements="98" conditionals="51" coveredconditionals="51" methods="19" coveredmethods="18" elements="171" coveredelements="167" complexity="0" loc="101" ncloc="101" packages="1" files="3" classes="3"/>
     <file name="game.js" path="/Users/juliaveenkamp/Dev/JavaScript/Rock-Paper-Scissors/src/game.js">
       <metrics statements="44" coveredstatements="44" conditionals="26" coveredconditionals="26" methods="8" coveredmethods="8"/>
@@ -12,37 +12,37 @@
       <line num="8" count="46" type="stmt"/>
       <line num="13" count="27" type="stmt"/>
       <line num="18" count="30" type="cond" truecount="2" falsecount="0"/>
-      <line num="19" count="14" type="stmt"/>
-      <line num="20" count="16" type="cond" truecount="2" falsecount="0"/>
-      <line num="21" count="11" type="stmt"/>
-      <line num="23" count="5" type="stmt"/>
+      <line num="19" count="8" type="stmt"/>
+      <line num="20" count="22" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="12" type="stmt"/>
+      <line num="23" count="10" type="stmt"/>
       <line num="28" count="43" type="stmt"/>
       <line num="29" count="43" type="stmt"/>
       <line num="33" count="40" type="cond" truecount="2" falsecount="0"/>
       <line num="34" count="14" type="stmt"/>
       <line num="35" count="26" type="cond" truecount="2" falsecount="0"/>
-      <line num="36" count="12" type="stmt"/>
-      <line num="38" count="14" type="stmt"/>
+      <line num="36" count="11" type="stmt"/>
+      <line num="38" count="15" type="stmt"/>
       <line num="44" count="49" type="cond" truecount="2" falsecount="0"/>
       <line num="45" count="14" type="stmt"/>
       <line num="46" count="14" type="stmt"/>
       <line num="49" count="35" type="cond" truecount="2" falsecount="0"/>
-      <line num="51" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="51" count="12" type="cond" truecount="2" falsecount="0"/>
       <line num="52" count="6" type="stmt"/>
       <line num="53" count="6" type="stmt"/>
-      <line num="57" count="5" type="stmt"/>
-      <line num="58" count="5" type="stmt"/>
-      <line num="62" count="24" type="cond" truecount="2" falsecount="0"/>
+      <line num="57" count="6" type="stmt"/>
+      <line num="58" count="6" type="stmt"/>
+      <line num="62" count="23" type="cond" truecount="2" falsecount="0"/>
       <line num="64" count="12" type="cond" truecount="2" falsecount="0"/>
-      <line num="65" count="5" type="stmt"/>
-      <line num="66" count="5" type="stmt"/>
-      <line num="70" count="7" type="stmt"/>
-      <line num="71" count="7" type="stmt"/>
-      <line num="77" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="65" count="7" type="stmt"/>
+      <line num="66" count="7" type="stmt"/>
+      <line num="70" count="5" type="stmt"/>
+      <line num="71" count="5" type="stmt"/>
+      <line num="77" count="11" type="cond" truecount="2" falsecount="0"/>
       <line num="78" count="5" type="stmt"/>
       <line num="79" count="5" type="stmt"/>
-      <line num="83" count="7" type="stmt"/>
-      <line num="84" count="7" type="stmt"/>
+      <line num="83" count="6" type="stmt"/>
+      <line num="84" count="6" type="stmt"/>
       <line num="91" count="40" type="stmt"/>
       <line num="92" count="40" type="stmt"/>
       <line num="93" count="40" type="stmt"/>
@@ -58,15 +58,15 @@
       <line num="22" count="30" type="cond" truecount="2" falsecount="0"/>
       <line num="23" count="10" type="stmt"/>
       <line num="24" count="20" type="cond" truecount="4" falsecount="0"/>
-      <line num="25" count="7" type="stmt"/>
-      <line num="26" count="13" type="cond" truecount="4" falsecount="0"/>
-      <line num="27" count="7" type="stmt"/>
-      <line num="29" count="6" type="stmt"/>
+      <line num="25" count="6" type="stmt"/>
+      <line num="26" count="14" type="cond" truecount="4" falsecount="0"/>
+      <line num="27" count="9" type="stmt"/>
+      <line num="29" count="5" type="stmt"/>
       <line num="35" count="24" type="cond" truecount="2" falsecount="0"/>
       <line num="36" count="9" type="stmt"/>
       <line num="37" count="15" type="cond" truecount="2" falsecount="0"/>
-      <line num="38" count="6" type="stmt"/>
-      <line num="40" count="9" type="stmt"/>
+      <line num="38" count="5" type="stmt"/>
+      <line num="40" count="10" type="stmt"/>
       <line num="45" count="2" type="stmt"/>
     </file>
     <file name="play.js" path="/Users/juliaveenkamp/Dev/JavaScript/Rock-Paper-Scissors/src/play.js">
@@ -91,19 +91,19 @@
       <line num="31" count="20" type="stmt"/>
       <line num="32" count="20" type="stmt"/>
       <line num="37" count="19" type="cond" truecount="2" falsecount="0"/>
-      <line num="38" count="6" type="stmt"/>
-      <line num="39" count="6" type="stmt"/>
-      <line num="40" count="13" type="cond" truecount="2" falsecount="0"/>
-      <line num="41" count="6" type="stmt"/>
-      <line num="42" count="6" type="stmt"/>
+      <line num="38" count="4" type="stmt"/>
+      <line num="39" count="4" type="stmt"/>
+      <line num="40" count="15" type="cond" truecount="2" falsecount="0"/>
+      <line num="41" count="8" type="stmt"/>
+      <line num="42" count="8" type="stmt"/>
       <line num="44" count="7" type="stmt"/>
       <line num="45" count="7" type="stmt"/>
       <line num="49" count="19" type="cond" truecount="2" falsecount="0"/>
-      <line num="50" count="4" type="stmt"/>
-      <line num="51" count="4" type="stmt"/>
-      <line num="52" count="15" type="cond" truecount="2" falsecount="0"/>
-      <line num="53" count="7" type="stmt"/>
-      <line num="54" count="7" type="stmt"/>
+      <line num="50" count="3" type="stmt"/>
+      <line num="51" count="3" type="stmt"/>
+      <line num="52" count="16" type="cond" truecount="2" falsecount="0"/>
+      <line num="53" count="8" type="stmt"/>
+      <line num="54" count="8" type="stmt"/>
       <line num="56" count="8" type="stmt"/>
       <line num="57" count="8" type="stmt"/>
       <line num="63" count="1" type="stmt"/>

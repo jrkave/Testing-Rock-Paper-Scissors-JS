@@ -34,9 +34,16 @@ describe('GameRunner DOM is updated with correct content', () => {
   });
 
   test('Calls applyContentChangesToDOM when button is clicked', () => {
-    const button = document.getElementById('rock');
+    // Set up spies
+    const gameSpy = jest.spyOn(game, 'playGame');
+    const updaterSpy = jest.spyOn(updater, 'getGameStatusUpdates');
     const contentSpy = jest.spyOn(gameRunner, 'applyContentChangesToDOM');
+
+    const button = document.getElementById('rock');
     button.click();
+
+    expect(gameSpy).toHaveBeenCalled();
+    expect(updaterSpy).toHaveBeenCalled();
     expect(contentSpy).toHaveBeenCalled();
   });
 

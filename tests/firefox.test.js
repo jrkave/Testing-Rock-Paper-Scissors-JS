@@ -49,7 +49,7 @@ async function testSelection() {
             console.error('Testing Paper Selection: FAILED');
         }
 
-        // Test Case 4: Choose "Scissors", then check final outcome
+        // Test Case 4: Choose "Scissors"
         await driver.findElement(By.id('scissors')).click();
         playerMove = await driver.wait(until.elementLocated(By.id('player-move')), 10000).getText();
         if (playerMove.includes("scissors")) {
